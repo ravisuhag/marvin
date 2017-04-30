@@ -52,6 +52,15 @@ update_shell() {
   chsh -s "$(which zsh)"
 }
 
+gem_install_or_update() {
+  if gem list "$1" --installed > /dev/null; then
+    gem update "$@"
+  else
+    gem install "$@"
+    rbenv rehash
+  fi
+}
+
 echo "       o       "
 echo "     _ | _     "
 echo "    | ◡ ◡ |    "
@@ -161,3 +170,21 @@ brew "git-extras"
 brew "gnu-typist"
 
 EOF
+
+inform "Configuring Ruby ..."
+find_latest_ruby() {
+  rbenv install -l | grep -v - | tail -1 | sed -e 's/^ *//'
+}
+
+ruby_version="$(find_latest_ruby)"
+# shellcheck disable=SC2016
+append_to_zshrc 'eval "$(rbenv init - --no-rehash)"' 1
+eval "$(rbenv init -)"
+
+if ! rbenv versions | grep -Fq "$ruby_version"; then
+  RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/opt/openssl rbenv install -s "$ruby_version"
+fi
+
+rbenv global "$ruby_version"
+gem update --system
+gem_install_or_update 'bundler'
