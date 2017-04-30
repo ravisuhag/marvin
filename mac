@@ -3,6 +3,17 @@
 # Welcome to the rasbot !
 # Be prepared to turn your machine into development devil
 
+inform() {
+  local fmt="$1"; shift
+  # shellcheck disable=SC2059
+  printf "\n$fmt\n" "$@"
+}
+
+# shellcheck disable=SC2154
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+
 # Check if command line tools are installed.
 xcode-select -p
 
@@ -15,24 +26,43 @@ fi
 # Setting up ssh key for github  account
 pub=$HOME/.ssh/id_rsa.pub
 
-echo 'Checking for SSH key...'
+inform 'Checking for SSH key...'
 [[ -f $pub ]] || ssh-keygen -t rsa
 
 
 if ! [[ -f $pub ]]; then
-    echo "No ssh key found. Do you want to create one?"
+    inform "No ssh key found. Do you want to create one?"
     select yn in "Yes" "No"; do
         case $yn in
             Yes ) ssh-keygen -t rsa;;
-            # TODO: Open vim and ask user to enter their own key
             No ) exit;;
         esac
     done
 fi
 
 # Prompt user to paste key in github
-echo 'Copying public key to clipboard. Paste it into your Github account...'
+inform 'Copying public key to clipboard. Paste it into your Github account...'
 [[ -f $pub ]] && cat $pub | pbcopy
 open 'https://github.com/account/ssh'
 read -p "Press enter to continue..."
 
+if [ ! -d "$HOME/.bin/" ]; then
+    mkdir "$HOME/.bin"
+fi
+
+create_zshrc() {
+    if [ ! -f "$HOME/.zshrc" ]; then
+        touch "$HOME/.zshrc"
+    fi
+}
+
+update_shell() {
+    fancy_echo "Changing shell to zsh ..."
+    create_zshrc
+    chsh -s "$(which zsh)"
+}
+
+case "$SHELL" in
+    */zsh) create_zshrc ;;
+    *) update_shell ;;
+esac
