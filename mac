@@ -130,19 +130,13 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "zsh"
 
-# Heroku
-brew "heroku-toolbelt"
-
-# Image manipulation
-brew "imagemagick"
-
 # Programming languages 
 brew "node"
 brew "go"
-brew "rbenv"
-brew "ruby-build"
 
 # Package managers
+brew "rbenv"
+brew "ruby-build"
 brew "yarn"
 brew "leiningen"
 brew "glide"
@@ -152,14 +146,14 @@ brew "consul"
 brew "zookeeper"
 brew "kafka"
 brew "grpc"
+brew "imagemagick"
+brew "heroku-toolbelt"
 
 # Databases
 brew "postgres", restart_service: true
 brew "redis", restart_service: true
 brew "mysql"
 brew "mongodb"
-brew "redis"
-brew "sqlite"
 
 # Utilities
 brew "youtube-dl"
@@ -167,7 +161,6 @@ brew "htop"
 brew "tig"
 brew "logstalgia"
 brew "git-extras"
-brew "gnu-typist"
 
 EOF
 
