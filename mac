@@ -5,8 +5,34 @@
 
 # Check if command line tools are installed.
 xcode-select -p
+
 if [[ $? != 0 ]]; then 
-  echo 'Command line tools are not installed...'
-  echo 'Please install to continue.'
-  exit
+    echo 'Command line tools are not installed...'
+    echo 'Please install to continue.'
+    exit
 fi
+
+# Setting up ssh key for github  account
+pub=$HOME/.ssh/id_rsa.pub
+
+echo 'Checking for SSH key...'
+[[ -f $pub ]] || ssh-keygen -t rsa
+
+
+if ! [[ -f $pub ]]; then
+    echo "No ssh key found. Do you want to create one?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) ssh-keygen -t rsa;;
+            # TODO: Open vim and ask user to enter their own key
+            No ) exit;;
+        esac
+    done
+fi
+
+# Prompt user to paste key in github
+echo 'Copying public key to clipboard. Paste it into your Github account...'
+[[ -f $pub ]] && cat $pub | pbcopy
+open 'https://github.com/account/ssh'
+read -p "Press enter to continue..."
+
