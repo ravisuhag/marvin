@@ -188,3 +188,11 @@ fi
 rbenv global "$ruby_version"
 gem update --system
 gem_install_or_update 'bundler'
+
+# Install npm packages
+npm install vtop -g
+npm install eslint -g
+npm install gulp-cli -g
+npm install react-native-cli -g
+npm install artillery -g
+npm install fast-cli -g
