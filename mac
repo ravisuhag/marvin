@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Welcome to the rasbot !
+# Be prepared to turn your machine into development devil
+
+# Check if command line tools are installed.
+xcode-select -p
+if [[ $? != 0 ]]; then 
+  echo 'Command line tools are not installed...'
+  echo 'Please install to continue.'
+  exit
+fi
