@@ -9,60 +9,155 @@ inform() {
   printf "\n$fmt\n" "$@"
 }
 
+append_to_zshrc() {
+  local text="$1" 
+  local zshrc="$HOME/.zshrc"
+  local skip_new_line="${2:-0}"
+
+  if ! grep -qs "^$text$" "$file"; then
+    printf "\n%s\n" "$text" >> "$zshrc"
+  fi
+}
+
+ssh_key_setup(){
+  local pub=$HOME/.ssh/id_rsa.pub
+  inform 'Checking for SSH key...'
+  [[ -f $pub ]] || ssh-keygen -t rsa
+
+  if ! [[ -f $pub ]]; then
+    inform "No ssh key found. Do you want to create one?"
+    select yn in "Yes" "No"; do
+      case $yn in
+        Yes ) ssh-keygen -t rsa;;
+        No ) exit;;
+      esac
+    done
+  fi
+
+  inform 'Copying public key to clipboard. Paste it into your Github account...'
+  [[ -f $pub ]] && cat $pub | pbcopy
+  open 'https://github.com/account/ssh'
+  read -p "Press enter to continue..."
+}
+
+create_zshrc() {
+  if [ ! -f "$HOME/.zshrc" ]; then
+    touch "$HOME/.zshrc"
+  fi
+}
+
+update_shell() {
+  fancy_echo "Changing shell to zsh ..."
+  create_zshrc
+  chsh -s "$(which zsh)"
+}
+
+echo "       o       "
+echo "     _ | _     "
+echo "    | ◡ ◡ |    "
+echo "    |  ⏝  |   "
+echo "   — ‾‾‾‾‾ —   "
+echo "  |         |  "
+echo "  |  |   |  |  "
+
+inform "Rasbot is your service. Let's make your mac awesome."
+
 # shellcheck disable=SC2154
-trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+trap 'ret=$?; test $ret -ne 0 && printf "Failed\n\n" >&2; exit $ret' EXIT
 
 set -e
 
 # Check if command line tools are installed.
-xcode-select -p
+xcode-select -p >/dev/null
 
 if [[ $? != 0 ]]; then 
-    echo 'Command line tools are not installed...'
-    echo 'Please install to continue.'
-    exit
+  echo 'Command line tools are not installed...'
+  echo 'Please install to continue.'
+  exit
 fi
-
-# Setting up ssh key for github  account
-pub=$HOME/.ssh/id_rsa.pub
-
-inform 'Checking for SSH key...'
-[[ -f $pub ]] || ssh-keygen -t rsa
-
-
-if ! [[ -f $pub ]]; then
-    inform "No ssh key found. Do you want to create one?"
-    select yn in "Yes" "No"; do
-        case $yn in
-            Yes ) ssh-keygen -t rsa;;
-            No ) exit;;
-        esac
-    done
-fi
-
-# Prompt user to paste key in github
-inform 'Copying public key to clipboard. Paste it into your Github account...'
-[[ -f $pub ]] && cat $pub | pbcopy
-open 'https://github.com/account/ssh'
-read -p "Press enter to continue..."
 
 if [ ! -d "$HOME/.bin/" ]; then
-    mkdir "$HOME/.bin"
+  mkdir "$HOME/.bin"
 fi
 
-create_zshrc() {
-    if [ ! -f "$HOME/.zshrc" ]; then
-        touch "$HOME/.zshrc"
-    fi
-}
-
-update_shell() {
-    fancy_echo "Changing shell to zsh ..."
-    create_zshrc
-    chsh -s "$(which zsh)"
-}
-
 case "$SHELL" in
-    */zsh) create_zshrc ;;
-    *) update_shell ;;
+  */zsh) create_zshrc ;;
+  *) update_shell ;;
 esac
+
+# shellcheck disable=SC2016
+append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
+
+# Homebrew installation
+if ! command -v brew >/dev/null; then
+  inform "Installing Homebrew ..."
+    curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+
+    append_to_zshrc '# Recommended by brew doctor'
+    # shellcheck disable=SC2016
+    append_to_zshrc 'export PATH="/usr/local/bin:$PATH"'
+    export PATH="/usr/local/bin:$PATH"
+else
+  inform "Homebrew already installed."
+fi
+
+if brew list | grep -Fq brew-cask; then
+  inform "Uninstalling old Homebrew-Cask ..."
+  brew uninstall --force brew-cask
+fi
+
+inform "Updating Homebrew formulae ..."
+brew update
+
+brew bundle --file=- <<EOF
+
+tap "thoughtbot/formulae"
+tap "homebrew/services"
+
+# Unix
+brew "git"
+brew "openssl"
+brew "the_silver_searcher"
+brew "tmux"
+brew "zsh"
+
+# Heroku
+brew "heroku-toolbelt"
+
+# Image manipulation
+brew "imagemagick"
+
+# Programming languages 
+brew "node"
+brew "go"
+brew "rbenv"
+brew "ruby-build"
+
+# Package managers
+brew "yarn"
+brew "leiningen"
+brew "glide"
+
+# Tools
+brew "consul"
+brew "zookeeper"
+brew "kafka"
+brew "grpc"
+
+# Databases
+brew "postgres", restart_service: true
+brew "redis", restart_service: true
+brew "mysql"
+brew "mongodb"
+brew "redis"
+brew "sqlite"
+
+# Utilities
+brew "youtube-dl"
+brew "htop"
+brew "tig"
+brew "logstalgia"
+brew "git-extras"
+brew "gnu-typist"
+
+EOF
