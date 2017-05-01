@@ -173,12 +173,7 @@ brew "tig"
 brew "logstalgia"
 brew "git-extras"
 
-EOF
-
-brew bundle --file=- <<EOF
-
-# Apps
-
+# Applications
 cask "vlc"                 unless Dir.exists?('/Applications/VLC.app')
 cask "transmission"        unless Dir.exists?('/Applications/transmission.app')
 cask "atom"                unless Dir.exists?('/Applications/atom.app')
@@ -233,5 +228,7 @@ npm install gulp-cli -g --silent
 npm install react-native-cli -g --silent
 npm install artillery -g --silent
 npm install fast-cli -g --silent
+
+ssh_key_setup
 
 inform "Setup complete!!!"

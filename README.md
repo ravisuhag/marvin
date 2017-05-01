@@ -187,7 +187,7 @@ Or, attach the whole log file as an attachment.
 [Skype]: https://www.skype.com/en/
 [Postico]: https://eggerapps.at/postico/
 [Mysql Workbench]: https://www.mysql.com/products/workbench/
-[Sash]: https://kapeli.com/dash
+[Dash]: https://kapeli.com/dash
 [Tunnelbear]: https://www.tunnelbear.com/
 
 It should take less than 20 minutes to install (depends on your machine).
