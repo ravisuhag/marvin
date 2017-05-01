@@ -1,13 +1,11 @@
-## Rasbot
+# Rasbot
 
-Rasbot is a script to set up an Mac OS rasbot for web development.
+<img align="right" width="300" src="mascot.jpg">
 
-It can be run multiple times on the same machine safely.
-It installs, upgrades, or skips packages
-based on what is already installed on the machine.
 
-Requirements
-------------
+> Rasbot is a script to set up an Mac OS laptop for web development.
+
+It can be run multiple times on the same machine safely. It installs, upgrades, or skips packages based on what is already installed on the machine.
 
 We support:
 
@@ -20,11 +18,11 @@ Older versions may work but aren't regularly tested. Bug reports for older
 versions are welcome.
 
 
-### Install
+## Install
 
 In your Terminal window, copy and paste the command below, then press return.
 ```sh
-    curl --silent https://raw.githubusercontent.com/ravisuhag/rasbot/master/mac | sh 2>&1 | tee ~/rasbot.log
+curl --silent https://raw.githubusercontent.com/ravisuhag/rasbot/master/mac | sh 2>&1 | tee ~/rasbot.log
 ```
 The script itself is available in this repo for you to review if you want to see what it does and how it works.
 
@@ -89,7 +87,7 @@ Or, attach the whole log file as an attachment.
 [Glide]: https://glide.sh/
 
 
-#### Tools: 
+#### Tools:
 
 * [Consul] Service Discovery and Configuration Made Easy
 * [Zookeeper] develop and maintain an open-source servers
@@ -102,7 +100,7 @@ Or, attach the whole log file as an attachment.
 [Zookeeper]: https://zookeeper.apache.org/
 [Kafka]: https://kafka.apache.org/
 [GRPC]: http://www.grpc.io/
-[ImageMagick]: http://www.imagemagick.org/
+[Image Magick]: http://www.imagemagick.org/
 [Heroku Toolbelt]: https://www.heroku.com/
 
 #### Databases:
@@ -122,11 +120,11 @@ Or, attach the whole log file as an attachment.
 * [htop] interactive system-monitor
 * [tig] text-mode interface for git
 * [logstalgia] Website Access Log Visualization
-* [git-extras] repo summary, repl, changelog population, author commit percentages 
+* [git-extras] repo summary, repl, changelog population, author commit percentages
 
 [youtube-dl]: https://rg3.github.io/youtube-dl/
 [htop]: http://hisham.hm/htop/
-[tig]: https://github.com/jonas/tig
+[Tig]: https://github.com/jonas/tig
 [logstalgia]: http://logstalgia.io/
 [git-extras]: https://github.com/tj/git-extras
 
@@ -155,4 +153,3 @@ Thank you, [contributors]!
 Rasbot is inspired by laptop script, customized for my own needs. It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
 
 [LICENSE]: LICENSE
-
