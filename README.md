@@ -1,7 +1,4 @@
-<img align="right" height="200" src="https://cdn.dribbble.com/users/9964/screenshots/605047/hover-bot.gif">
-
 ## Rasbot
-
 
 Rasbot is a script to set up an Mac OS rasbot for web development.
 
@@ -54,7 +51,6 @@ Or, attach the whole log file as an attachment.
 * [Git] for version control
 * [OpenSSL] for Transport Layer Security (TLS)
 * [The Silver Searcher] for finding things in files
-* [Tmux]  
 * [Zsh] as your shell
 
 [Git]: https://git-scm.com/
@@ -114,7 +110,7 @@ Or, attach the whole log file as an attachment.
 * [Postgres] for storing relational data
 * [Redis] for storing key-value data
 * [My Sql] for storing relational data
-* [MongoDB] for storing nor relational data
+* [Mongo DB] for storing non relational data
 
 [Postgres]: http://www.postgresql.org/
 [Redis]: http://redis.io/

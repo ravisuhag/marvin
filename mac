@@ -127,7 +127,6 @@ tap "homebrew/services"
 brew "git"
 brew "openssl"
 brew "the_silver_searcher"
-brew "tmux"
 brew "zsh"
 
 # Programming languages 
