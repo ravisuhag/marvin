@@ -3,7 +3,7 @@
 <img align="right" width="300" src="mascot.jpg">
 
 
-> marvin is a script to set up an Mac OS laptop for web development.
+> Marvin is a shell script to set up an Mac OS laptop for development.
 
 It can be run multiple times on the same machine safely. It installs, upgrades, or skips packages based on what is already installed on the machine.
 
