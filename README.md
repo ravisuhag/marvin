@@ -160,7 +160,7 @@ Or, attach the whole log file as an attachment.
 * [Skype] free calls to friends and family
 * [Postico] a modern postgres client
 * [Mysql Workbench]  mysql client
-* [Sash]  offline access to API documentation sets.
+* [Dash]  offline access to API documentation sets.
 * [Tunnelbear] Secure VPN service
 
 [VLC]: http://www.videolan.org/

@@ -14,8 +14,12 @@ append_to_zshrc() {
   local zshrc="$HOME/.zshrc"
   local skip_new_line="${2:-0}"
 
-  if ! grep -qs "^$text$" "$file"; then
-    printf "\n%s\n" "$text" >> "$zshrc"
+  if ! grep -Fqs "$text" "$zshrc"; then
+    if [ "$skip_new_line" -eq 1 ]; then
+      printf "%s\n" "$text" >> "$zshrc"
+    else
+      printf "\n%s\n" "$text" >> "$zshrc"
+    fi
   fi
 }
 
@@ -61,6 +65,12 @@ gem_install_or_update() {
   fi
 }
 
+app_is_installed() {
+  local app_name
+  app_name=$(echo "$1" | cut -d'-' -f1)
+  find /Applications -iname "$app_name*" -maxdepth 1 | egrep '.*' > /dev/null
+}
+
 echo "       o       "
 echo "     _ | _     "
 echo "    | ◡ ◡ |    "
@@ -69,7 +79,7 @@ echo "   — ‾‾‾‾‾ —   "
 echo "  |         |  "
 echo "  |  |   |  |  "
 
-inform "Rasbot is your service. Let's make your mac awesome."
+inform "Rasbot is at your service. Let's make your mac awesome."
 
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "Failed\n\n" >&2; exit $ret' EXIT
@@ -120,7 +130,6 @@ brew update
 
 brew bundle --file=- <<EOF
 
-tap "thoughtbot/formulae"
 tap "homebrew/services"
 
 # Unix
@@ -164,34 +173,38 @@ brew "tig"
 brew "logstalgia"
 brew "git-extras"
 
+EOF
+
+brew bundle --file=- <<EOF
+
 # Apps
 
-cask "vlc"
-cask "transmission"
-cask "atom"
-cask "sublime-text"
-cask "android-studio"
-cask "iterm2"
-cask "google-chrome"
-cask "blisk"
-cask "firefox"
-cask "sip"
-cask "resolutionator"
-cask "flux"
-cask "1password"
-cask "dropbox"
-cask "google-drive"
-cask "github-desktop"
-cask "virtualbox"
-cask "slack"
-cask "rescuetime"
-cask "tunnelblick"
-cask "spotify"
-cask "skype"
-cask "postico"
-cask "mysqlworkbench"
-cask "dash"
-cask "tunnelbear"
+cask "vlc"                 unless Dir.exists?('/Applications/VLC.app')
+cask "transmission"        unless Dir.exists?('/Applications/transmission.app')
+cask "atom"                unless Dir.exists?('/Applications/atom.app')
+cask "sublime-text"        unless Dir.exists?('/Applications/Sublime Text.app')
+cask "android-studio"      unless Dir.exists?('/Applications/Android Studio.app')
+cask "iterm2"              unless Dir.exists?('/Applications/iTerm.app')
+cask "google-chrome"       unless Dir.exists?('/Applications/Google Chrome.app')
+cask "blisk"               unless Dir.exists?('/Applications/Blisk.app')
+cask "firefox"             unless Dir.exists?('/Applications/Firefox.app')
+cask "sip"                 unless Dir.exists?('/Applications/Sip.app')
+cask "resolutionator"      unless Dir.exists?('/Applications/Resolutionator.app')
+cask "flux"                unless Dir.exists?('/Applications/Flux.app')
+cask "1password"           unless Dir.exists?('/Applications/1Password.app')
+cask "dropbox"             unless Dir.exists?('/Applications/Dropbox.app')
+cask "google-drive"        unless Dir.exists?('/Applications/Google Drive.app')
+cask "github-desktop"      unless Dir.exists?('/Applications/Github Desktop.app')
+cask "virtualbox"          unless Dir.exists?('/Applications/Virtual Box.app')
+cask "slack"               unless Dir.exists?('/Applications/Slack.app')
+cask "rescuetime"          unless Dir.exists?('/Applications/RescueTime.app')
+cask "tunnelblick"         unless Dir.exists?('/Applications/Tunnelblick.app')
+cask "spotify"             unless Dir.exists?('/Applications/Spotify.app')
+cask "skype"               unless Dir.exists?('/Applications/Skype.app')
+cask "postico"             unless Dir.exists?('/Applications/Postico.app')
+cask "mysqlworkbench"      unless Dir.exists?('/Applications/MySqlWorkbench.app')
+cask "dash"                unless Dir.exists?('/Applications/Dash.app')
+cask "tunnelbear"          unless Dir.exists?('/Applications/TunnelBear.app')
 
 EOF
 
@@ -210,15 +223,15 @@ if ! rbenv versions | grep -Fq "$ruby_version"; then
 fi
 
 rbenv global "$ruby_version"
-gem update --system
-gem_install_or_update 'bundler'
+# gem update --system
+# gem_install_or_update 'bundler'
 
 # Install npm packages
-npm install vtop -g
-npm install eslint -g
-npm install gulp-cli -g
-npm install react-native-cli -g
-npm install artillery -g
-npm install fast-cli -g
+npm install vtop -g --silent
+npm install eslint -g --silent
+npm install gulp-cli -g --silent
+npm install react-native-cli -g --silent
+npm install artillery -g --silent
+npm install fast-cli -g --silent
 
 inform "Setup complete!!!"
