@@ -59,7 +59,7 @@ Or, attach the whole log file as an attachment.
 #### Programming languages:
 
 * [Node.js] for running apps and installing JavaScript packages
-* [Go] programming langugae by google
+* [Go] programming language by google
 * [Ruby] a dynamic programming language with a focus on simplicity and productivity
 * [Clojure] a dynamic, general-purpose programming language
 * [Java] java Runtime Environment
