@@ -1,9 +1,9 @@
-# Rasbot
+# Marvin 
 
 <img align="right" width="300" src="mascot.jpg">
 
 
-> Rasbot is a script to set up an Mac OS laptop for web development.
+> marvin is a script to set up an Mac OS laptop for web development.
 
 It can be run multiple times on the same machine safely. It installs, upgrades, or skips packages based on what is already installed on the machine.
 
@@ -22,7 +22,7 @@ versions are welcome.
 
 In your Terminal window, copy and paste the command below, then press return.
 ```sh
-curl --silent https://raw.githubusercontent.com/ravisuhag/rasbot/master/mac | sh 2>&1 | tee ~/rasbot.log
+curl --silent https://raw.githubusercontent.com/ravisuhag/marvin/master/mac | sh 2>&1 | tee ~/marvin.log
 ```
 The script itself is available in this repo for you to review if you want to see what it does and how it works.
 
@@ -30,10 +30,10 @@ Once the script is done, quit and relaunch Terminal.
 
 It is highly recommended to run the script regularly to keep your computer up to date. Once the script has been installed, you'll be able to run it at your convenience by typing laptop and pressing return in your Terminal.
 
-Your last rasbot run will be saved to `~/rasbot.log`.
+Your last marvin run will be saved to `~/marvin.log`.
 Read through it to see if you can debug the issue yourself.
 If not, copy the lines where the script failed into a
-[new GitHub Issue](https://github.com/ravisuhag/rasbot/issues/new) for us.
+[new GitHub Issue](https://github.com/ravisuhag/marvin/issues/new) for us.
 Or, attach the whole log file as an attachment.
 
 ## What it sets up
@@ -210,10 +210,10 @@ brew install shellcheck
 
 Thank you, [contributors]!
 
-[contributors]: https://github.com/ravisuhag/rasbot/graphs/contributors
+[contributors]: https://github.com/ravisuhag/marvin/graphs/contributors
 
 ## License
 
-Rasbot is inspired by laptop script, customized for my own needs. It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
+marvin is inspired by laptop script, customized for my own needs. It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
 
 [LICENSE]: LICENSE

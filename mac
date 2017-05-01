@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Welcome to the rasbot !
+# Welcome to the marvin !
 # Be prepared to turn your machine into development devil
 
 inform() {
@@ -79,7 +79,7 @@ echo "   — ‾‾‾‾‾ —   "
 echo "  |         |  "
 echo "  |  |   |  |  "
 
-inform "Rasbot is at your service. Let's make your mac awesome."
+inform "Marvin is at your service. Let's make your mac awesome."
 
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "Failed\n\n" >&2; exit $ret' EXIT
