@@ -10,7 +10,7 @@ inform() {
 }
 
 append_to_zshrc() {
-  local text="$1" 
+  local text="$1"
   local zshrc="$HOME/.zshrc"
   local skip_new_line="${2:-0}"
 
@@ -79,7 +79,7 @@ set -e
 # Check if command line tools are installed.
 xcode-select -p >/dev/null
 
-if [[ $? != 0 ]]; then 
+if [[ $? != 0 ]]; then
   echo 'Command line tools are not installed...'
   echo 'Please install to continue.'
   exit
@@ -129,9 +129,10 @@ brew "openssl"
 brew "the_silver_searcher"
 brew "zsh"
 
-# Programming languages 
+# Programming languages
 brew "node"
 brew "go"
+cask "java"
 
 # Package managers
 brew "rbenv"
@@ -147,6 +148,8 @@ brew "kafka"
 brew "grpc"
 brew "imagemagick"
 brew "heroku-toolbelt"
+cask "vagrant"
+cask "chefdk"
 
 # Databases
 brew "postgres", restart_service: true
@@ -160,6 +163,35 @@ brew "htop"
 brew "tig"
 brew "logstalgia"
 brew "git-extras"
+
+# Apps
+
+cask "vlc"
+cask "transmission"
+cask "atom"
+cask "sublime-text"
+cask "android-studio"
+cask "iterm2"
+cask "google-chrome"
+cask "blisk"
+cask "firefox"
+cask "sip"
+cask "resolutionator"
+cask "flux"
+cask "1password"
+cask "dropbox"
+cask "google-drive"
+cask "github-desktop"
+cask "virtualbox"
+cask "slack"
+cask "rescuetime"
+cask "tunnelblick"
+cask "spotify"
+cask "skype"
+cask "postico"
+cask "mysqlworkbench"
+cask "dash"
+cask "tunnelbear"
 
 EOF
 
@@ -188,3 +220,5 @@ npm install gulp-cli -g
 npm install react-native-cli -g
 npm install artillery -g
 npm install fast-cli -g
+
+inform "Setup complete!!!"

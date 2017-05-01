@@ -62,11 +62,13 @@ Or, attach the whole log file as an attachment.
 * [Go] programming langugae by google
 * [Ruby] a dynamic programming language with a focus on simplicity and productivity
 * [Clojure] a dynamic, general-purpose programming language
+* [Java] java Runtime Environment
 
 [Node.js]: http://nodejs.org/
 [Go]: https://golang.org/
 [Ruby]: https://www.ruby-lang.org/en/
 [Clojure]: https://clojure.org/
+[Java]: https://www.java.com/en/
 
 #### Package Managers:
 
@@ -89,12 +91,14 @@ Or, attach the whole log file as an attachment.
 
 #### Tools:
 
-* [Consul] Service Discovery and Configuration Made Easy
+* [Consul] service Discovery and Configuration Made Easy
 * [Zookeeper] develop and maintain an open-source servers
 * [Kafka] a distributed streaming platform
 * [GRPC] a high performance, open-source universal RPC framework
-* [Image Magick] create, edit, compose, or convert bitmap images
+* [Image Magick] to create, edit, compose, or convert bitmap images
 * [Heroku Toolbelt] for interacting with the Heroku API
+* [Vagrant] for development environments
+* [Chef] for automating your infrastructure
 
 [Consul]: https://www.consul.io/
 [Zookeeper]: https://zookeeper.apache.org/
@@ -102,6 +106,8 @@ Or, attach the whole log file as an attachment.
 [GRPC]: http://www.grpc.io/
 [Image Magick]: http://www.imagemagick.org/
 [Heroku Toolbelt]: https://www.heroku.com/
+[Vagrant]: https://www.vagrantup.com/
+[Chef]: https://www.chef.io/chef/
 
 #### Databases:
 
@@ -128,7 +134,63 @@ Or, attach the whole log file as an attachment.
 [logstalgia]: http://logstalgia.io/
 [git-extras]: https://github.com/tj/git-extras
 
-It should take less than 15 minutes to install (depends on your machine).
+### Apps
+
+* [VLC] media player
+* [Transmission] bit torrent client
+* [Atom] a hackable text editor
+* [Sublime Text] sophisticated text editor for code
+* [Android Studio] official IDE for Android
+* [Iterm] mac terminal replacement
+* [Chrome] fast, free web browser
+* [Blisk] a browser for web developers
+* [Firefox] a web browser by mozilla
+* [Sip] collect, organize & share your colors
+* [Resolutionator] embiggen your display
+* [Flux] software to make your life better
+* [1Password] password manager
+* [Dropbox] cloud file storage
+* [Google Drive] safe place for your files
+* [Github Desktop] collaboration from your desktop
+* [Virtual Box] powerful virtualization tool
+* [Slack] where work happens
+* [Rescuetime] track app usages
+* [Tunnelblick] free software for OpenVPN
+* [Spotify] listen to your fav music
+* [Skype] free calls to friends and family
+* [Postico] a modern postgres client
+* [Mysql Workbench]  mysql client
+* [Sash]  offline access to API documentation sets.
+* [Tunnelbear] Secure VPN service
+
+[VLC]: http://www.videolan.org/
+[Transmission]: https://transmissionbt.com/download/
+[Atom]: https://atom.io/
+[Sublime Text]: https://www.sublimetext.com/
+[Android Studio]: https://developer.android.com/studio
+[Iterm]: https://www.iterm2.com/
+[Chrome]: https://www.google.com/chrome/browser/desktop/
+[Blisk]: https://blisk.io/
+[Firefox]: https://www.mozilla.org/en-US/firefox/new/
+[Sip]: http://sipapp.io/
+[Resolutionator]: https://manytricks.com/resolutionator/
+[Flux]: https://justgetflux.com/
+[1Password]: https://1password.com/
+[Dropbox]: https://www.dropbox.com
+[Google Drive]: https://www.google.com/drive/
+[Github Desktop]: https://desktop.github.com/
+[Virtual Box]: https://www.virtualbox.org/
+[Slack]: https://slack.com/
+[Rescuetime]: https://www.rescuetime.com/
+[Tunnelblick]: https://tunnelblick.net/
+[Spotify]: https://www.spotify.com/
+[Skype]: https://www.skype.com/en/
+[Postico]: https://eggerapps.at/postico/
+[Mysql Workbench]: https://www.mysql.com/products/workbench/
+[Sash]: https://kapeli.com/dash
+[Tunnelbear]: https://www.tunnelbear.com/
+
+It should take less than 20 minutes to install (depends on your machine).
 
 ## Contributing
 
