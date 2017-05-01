@@ -172,6 +172,7 @@ brew "htop"
 brew "tig"
 brew "logstalgia"
 brew "git-extras"
+brew "fasd"
 
 # Applications
 cask "vlc"                 unless Dir.exists?('/Applications/VLC.app')
@@ -202,6 +203,11 @@ cask "dash"                unless Dir.exists?('/Applications/Dash.app')
 cask "tunnelbear"          unless Dir.exists?('/Applications/TunnelBear.app')
 
 EOF
+
+brew cask cleanup
+
+inform "Installed apps:"
+brew cask list
 
 inform "Configuring Ruby ..."
 find_latest_ruby() {

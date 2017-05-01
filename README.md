@@ -127,12 +127,14 @@ Or, attach the whole log file as an attachment.
 * [tig] text-mode interface for git
 * [logstalgia] Website Access Log Visualization
 * [git-extras] repo summary, repl, changelog population, author commit percentages
+* [fasd] command-line productivity booster
 
 [youtube-dl]: https://rg3.github.io/youtube-dl/
 [htop]: http://hisham.hm/htop/
 [Tig]: https://github.com/jonas/tig
 [logstalgia]: http://logstalgia.io/
 [git-extras]: https://github.com/tj/git-extras
+[fasd]: https://github.com/clvv/fasd
 
 ### Apps
 
