@@ -51,7 +51,7 @@ create_zshrc() {
 }
 
 update_shell() {
-  fancy_echo "Changing shell to zsh ..."
+  inform "Changing shell to zsh ..."
   create_zshrc
   chsh -s "$(which zsh)"
 }
