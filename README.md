@@ -164,6 +164,7 @@ Or, attach the whole log file as an attachment.
 * [Mysql Workbench]  mysql client
 * [Dash]  offline access to API documentation sets.
 * [Tunnelbear] Secure VPN service
+* [Zoom.us] Video Conferencing and Web Conferencing Service
 
 [VLC]: http://www.videolan.org/
 [Transmission]: https://transmissionbt.com/download/
@@ -191,6 +192,7 @@ Or, attach the whole log file as an attachment.
 [Mysql Workbench]: https://www.mysql.com/products/workbench/
 [Dash]: https://kapeli.com/dash
 [Tunnelbear]: https://www.tunnelbear.com/
+[Zoom.us]: https://zoom.us/
 
 It should take less than 20 minutes to install (depends on your machine).
 
