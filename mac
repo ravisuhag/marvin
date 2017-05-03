@@ -201,6 +201,7 @@ cask "postico"             unless Dir.exists?('/Applications/Postico.app')
 cask "mysqlworkbench"      unless Dir.exists?('/Applications/MySqlWorkbench.app')
 cask "dash"                unless Dir.exists?('/Applications/Dash.app')
 cask "tunnelbear"          unless Dir.exists?('/Applications/TunnelBear.app')
+cask "zoom"                unless Dir.exists?('/Applications/zoom.us.app')
 
 EOF
 
